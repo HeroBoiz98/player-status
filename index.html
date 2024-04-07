@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Player Buttons</title>
+</head>
+<body>
+    <h1>Player Buttons</h1>
+    <button id="player1Btn">Player 1</button>
+    <button id="player2Btn">Player 2</button>
+    <div id="message"></div>
+
+    <script>
+        const player1Btn = document.getElementById('player1Btn');
+        const player2Btn = document.getElementById('player2Btn');
+        const messageDisplay = document.getElementById('message');
+
+        player1Btn.addEventListener('click', () => {
+            fetch('/player1')
+                .then(response => response.text())
+                .then(message => {
+                    messageDisplay.textContent = message;
+                });
+        });
+
+        player2Btn.addEventListener('click', () => {
+            fetch('/player2')
+                .then(response => response.text())
+                .then(message => {
+                    messageDisplay.textContent = message;
+                });
+        });
+
+        // Function to fetch the status from the server
+        function getStatus() {
+            fetch('/status')
+                .then(response => response.text())
+                .then(status => {
+                    messageDisplay.textContent = status;
+                });
+        }
+
+        // Fetch initial status when the page loads
+        getStatus();
+        
+        // Set interval to periodically fetch the status
+        setInterval(getStatus, 2000); // Refresh every 2 seconds
+    </script>
+</body>
+</html>
