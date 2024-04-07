@@ -4,16 +4,146 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Player Buttons</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+<style>
+    body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #212121;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    padding: 0 20px;
+}
+
+h1 {
+    color: #FFD700;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    margin: 10px;
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: #FF5733;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background-color: #F83700;
+    transform: scale(1.05);
+}
+
+#message {
+    margin-top: 30px;
+    font-size: 24px;
+    color: #FFD700;
+    animation: fadeInOut 1.5s ease infinite alternate;
+}
+
+.decorative-element {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8));
+    z-index: -1;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    #message {
+        font-size: 18px;
+    }
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<script>
+    player1Btn.addEventListener('click', () => {
+    messageDisplay.textContent = '';
+    fetch('/player1')
+        .then(response => response.text())
+        .then(message => {
+            messageDisplay.textContent = message;
+            messageDisplay.style.color = '#4CAF50'; // Green color for player 1
+        });
+});
+
+player2Btn.addEventListener('click', () => {
+    messageDisplay.textContent = '';
+    fetch('/player2')
+        .then(response => response.text())
+        .then(message => {
+            messageDisplay.textContent = message;
+            messageDisplay.style.color = '#2196F3'; // Blue color for player 2
+        });
+});
+
+resetBtn.addEventListener('click', () => {
+    messageDisplay.textContent = '';
+    fetch('/reset')
+        .then(response => response.text())
+        .then(message => {
+            messageDisplay.textContent = message;
+            messageDisplay.style.color = '#333'; // Default color for reset
+        });
+});
+
+</script>
 </head>
 <body>
-    <h1>Player Buttons</h1>
-    <button id="player1Btn">Player 1</button>
-    <button id="player2Btn">Player 2</button>
-    <div id="message"></div>
+    <div class="container">
+        <h1>Player Status</h1>
+        <button id="player1Btn">Player 1</button>
+        <button id="player2Btn">Player 2</button>
+        <button id="player2Btn">Player 2</button>
+        <button id="resetBtn">Reset Status</button>
+        <div id="message"></div>
+    </div>
 
     <script>
         const player1Btn = document.getElementById('player1Btn');
         const player2Btn = document.getElementById('player2Btn');
+        const resetBtn = document.getElementById('resetBtn');
         const messageDisplay = document.getElementById('message');
 
         player1Btn.addEventListener('click', () => {
@@ -21,6 +151,7 @@
                 .then(response => response.text())
                 .then(message => {
                     messageDisplay.textContent = message;
+                    messageDisplay.style.color = '#4CAF50'; // Green color for player 1
                 });
         });
 
@@ -29,10 +160,19 @@
                 .then(response => response.text())
                 .then(message => {
                     messageDisplay.textContent = message;
+                    messageDisplay.style.color = '#2196F3'; // Blue color for player 2
                 });
         });
 
-        // Function to fetch the status from the server
+        resetBtn.addEventListener('click', () => {
+            fetch('/reset')
+                .then(response => response.text())
+                .then(message => {
+                    messageDisplay.textContent = message;
+                    messageDisplay.style.color = '#333'; // Default color for reset
+                });
+        });
+
         function getStatus() {
             fetch('/status')
                 .then(response => response.text())
@@ -41,11 +181,8 @@
                 });
         }
 
-        // Fetch initial status when the page loads
         getStatus();
-        
-        // Set interval to periodically fetch the status
-        setInterval(getStatus, 2000); // Refresh every 2 seconds
+        setInterval(getStatus, 2000);
     </script>
 </body>
 </html>
