@@ -94,6 +94,28 @@ button:hover {
         font-size: 18px;
     }
 }
+/* Add this CSS code */
+#message {
+    margin-top: 30px;
+    font-size: 24px;
+    color: #FFD700;
+    animation: fadeInOut 1.5s ease infinite alternate;
+    max-width: 90vw; /* Set maximum width to 90% of viewport width */
+    overflow-wrap: break-word; /* Allow long words to break into multiple lines */
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    #message {
+        font-size: 18px; /* Decrease font size for smaller screens */
+    }
+}
 
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -133,10 +155,9 @@ resetBtn.addEventListener('click', () => {
 <body>
     <div class="container">
         <h1>Player Status</h1>
-        <p>~by Aditya</p>
-
         <button id="player1Btn">Player 1</button>
         <button id="player2Btn">Player 2</button>
+        <button id="player3Btn">Player 3</button> <!-- New button for Player 3 -->
         <button id="resetBtn">Reset Status</button>
         <div id="message"></div>
     </div>
@@ -144,6 +165,7 @@ resetBtn.addEventListener('click', () => {
     <script>
         const player1Btn = document.getElementById('player1Btn');
         const player2Btn = document.getElementById('player2Btn');
+        const player3Btn = document.getElementById('player3Btn'); // New button reference
         const resetBtn = document.getElementById('resetBtn');
         const messageDisplay = document.getElementById('message');
 
@@ -162,6 +184,15 @@ resetBtn.addEventListener('click', () => {
                 .then(message => {
                     messageDisplay.textContent = message;
                     messageDisplay.style.color = '#2196F3'; // Blue color for player 2
+                });
+        });
+
+        player3Btn.addEventListener('click', () => { // Event listener for Player 3 button
+            fetch('/player3')
+                .then(response => response.text())
+                .then(message => {
+                    messageDisplay.textContent = message;
+                    messageDisplay.style.color = '#FF5733'; // Another color for player 3
                 });
         });
 
