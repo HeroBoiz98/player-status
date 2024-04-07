@@ -1,38 +1,45 @@
 const express = require('express');
 const app = express();
 
-// Store the button press status
-let player1Pressed = false;
-let player2Pressed = false;
+// Store the playing status
+let player1Playing = false;
+let player2Playing = false;
 
 // Serve HTML file
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-// Endpoint for player 1 button press
+// Endpoint for player 1 playing
 app.get('/player1', (req, res) => {
-    player1Pressed = true;
-    player2Pressed = false;
-    res.send('Player 1 has pressed');
+    player1Playing = true;
+    player2Playing = false;
+    res.send('Player 1 playing');
 });
 
-// Endpoint for player 2 button press
+// Endpoint for player 2 playing
 app.get('/player2', (req, res) => {
-    player1Pressed = false;
-    player2Pressed = true;
-    res.send('Player 2 has pressed');
+    player1Playing = false;
+    player2Playing = true;
+    res.send('Player 2 playing');
 });
 
-// Endpoint to check which player has pressed
+// Endpoint to reset the status
+app.get('/reset', (req, res) => {
+    player1Playing = false;
+    player2Playing = false;
+    res.send('No one playing');
+});
+
+// Endpoint to check who is playing
 app.get('/status', (req, res) => {
     let status = '';
-    if (player1Pressed) {
-        status = 'Player 1 has pressed';
-    } else if (player2Pressed) {
-        status = 'Player 2 has pressed';
+    if (player1Playing) {
+        status = 'Player 1 playing';
+    } else if (player2Playing) {
+        status = 'Player 2 playing';
     } else {
-        status = 'No player has pressed';
+        status = 'No one playing';
     }
     res.send(status);
 });
