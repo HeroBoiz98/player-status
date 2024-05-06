@@ -4,217 +4,304 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Player Buttons</title>
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
     body {
-    font-family: 'Press Start 2P', cursive;
-    background-color: #212121;
-    color: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        background-color: #000;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* Prevent content from overflowing the viewport */
+    }
+
+    .container {
+        text-align: center;
+        padding: 20px;
+        border: 2px solid #fff;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    }
+
+    h1 {
+        color: #0066ff; /* Bluish color */
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        animation: neon 1.5s ease-in-out infinite;
+    }
+
+    .icon {
+        font-size: 24px;
+        margin-right: 8px;
+        color: #0066ff; /* Bluish color */
+        animation: neon 1.5s ease-in-out infinite;
+    }
+
+    button {
+        margin: 10px;
+        padding: 12px 24px;
+        font-size: 18px;
+        background-color: rgba(25, 22, 22, 0.434); /* Semi-transparent white */
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        outline: none;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+        box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.1); /* Modified box-shadow */
+    }
+
+    button:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Slightly darker semi-transparent white on hover */
+        transform: scale(1.05);
+        box-shadow: 0px 12px 20px rgba(255, 255, 255, 0.2); /* Increased box-shadow on hover */
+    }
+
+    #message {
+        margin-top: 30px;
+        font-size: 24px;
+        color: #dddddd;
+        position: relative; /* Position relative for pseudo-element */
+        color: #0066ff; /* Bluish color */
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        animation: neon 2.5s ease-in-out infinite;
+    }
+
+    #message::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(100px); /* Apply blur effect */
+        z-index: -1;
+        border-radius: 20px; /* Match the border radius of the message box */
+        color: #0066ff; /* Bluish color */
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        animation: neon 1.5s ease-in-out infinite;
+    }
+
+    @keyframes neon {
+        0% {
+            text-shadow: 0 0 5px #0066ff, 0 0 10px #0066ff, 0 0 20px #0066ff, 0 0 30px #003399, 0 0 40px #003399, 0 0 50px #003399, 0 0 60px #003399;
+        }
+        50% {
+            text-shadow: none;
+        }
+        100% {
+            text-shadow: 0 0 5px #0066ff, 0 0 10px #0066ff, 0 0 20px #0066ff, 0 0 30px #003399, 0 0 40px #003399, 0 0 50px #003399, 0 0 60px #003399;
+        }
+    }
+    img {
+            max-width: 150px; /* Set maximum width */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 20px; /* Adjust margin as needed */
+            display: block; /* Ensure it's treated as a block element */
+            margin-top: 0; /* Remove default top margin */
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items at the top */
+            overflow: hidden; /* Prevent content from overflowing the viewport */
+        }
+        .container {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+img {
+    max-width: 150px; /* Set maximum width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Adjust margin as needed */
+    margin-top: 0; /* Remove default top margin */
+}
+img {
+    max-width: 150px; /* Set maximum width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Adjust margin as needed */
+    margin-top: 0; /* Remove default top margin */
+    filter: drop-shadow(0 0 10px #0066ff); /* Blue drop shadow */
+}
+body {
+    background: linear-gradient(135deg, #000000, #000066);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+.container {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body {
+    background: linear-gradient(135deg, #000000, #000066);
+    color: #fff;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden; /* Hide horizontal overflow */
 }
 
 .container {
     text-align: center;
-    padding: 0 20px;
-}
-
-h1 {
-    color: #FFD700;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-}
-
-.buttons {
+    padding: 20px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 80%;
+}
+
+img {
+    max-width: 60%;
+    height: auto;
+    margin-bottom: 20px;
+    margin-top: 0;
+    filter: drop-shadow(0 0 10px #0066ff);
+}
+
+h1 {
+    color: #0066ff;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 button {
     margin: 10px;
     padding: 12px 24px;
-    font-size: 18px;
-    background-color: #FF5733;
-    color: #ffffff;
-    border: none;
+    font-size: 16px;
     border-radius: 20px;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
-}
-
-button:hover {
-    background-color: #F83700;
-    transform: scale(1.05);
 }
 
 #message {
-    margin-top: 30px;
-    font-size: 24px;
-    color: #FFD700;
-    animation: fadeInOut 1.5s ease infinite alternate;
+    margin-top: 20px;
+    font-size: 18px;
 }
 
-.decorative-element {
-    position: absolute;
-    top: 10%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8));
-    z-index: -1;
-}
+/* Media queries for responsiveness */
 
-@keyframes fadeInOut {
-    0% {
-        opacity: 0;
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 90%; /* Adjust maximum width for smaller screens */
     }
-    100% {
-        opacity: 1;
-    }
-}
 
-@media screen and (max-width: 600px) {
     h1 {
-        font-size: 24px;
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
     }
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-    }
-    #message {
-        font-size: 18px;
-    }
-}
-/* Add this CSS code */
-#message {
-    margin-top: 30px;
-    font-size: 24px;
-    color: #FFD700;
-    animation: fadeInOut 1.5s ease infinite alternate;
-    max-width: 90vw; /* Set maximum width to 90% of viewport width */
-    overflow-wrap: break-word; /* Allow long words to break into multiple lines */
-}
 
-@media screen and (max-width: 600px) {
-    h1 {
-        font-size: 24px;
-    }
     button {
-        padding: 10px 20px;
-        font-size: 16px;
+        font-size: 14px; /* Adjust font size for smaller screens */
     }
+
     #message {
-        font-size: 18px; /* Decrease font size for smaller screens */
+        font-size: 16px; /* Adjust font size for smaller screens */
     }
 }
 
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<script>
-    player1Btn.addEventListener('click', () => {
-    messageDisplay.textContent = '';
-    fetch('/player1')
-        .then(response => response.text())
-        .then(message => {
-            messageDisplay.textContent = message;
-            messageDisplay.style.color = '#4CAF50'; // Green color for player 1
-        });
-});
-
-player2Btn.addEventListener('click', () => {
-    messageDisplay.textContent = '';
-    fetch('/player2')
-        .then(response => response.text())
-        .then(message => {
-            messageDisplay.textContent = message;
-            messageDisplay.style.color = '#2196F3'; // Blue color for player 2
-        });
-});
-
-resetBtn.addEventListener('click', () => {
-    messageDisplay.textContent = '';
-    fetch('/reset')
-        .then(response => response.text())
-        .then(message => {
-            messageDisplay.textContent = message;
-            messageDisplay.style.color = '#333'; // Default color for reset
-        });
-});
-
-</script>
 </head>
 <body>
-    <div class="container">
-        <h1>Player Status</h1>
-        <button id="player1Btn">Player 1</button>
-        <button id="player2Btn">Player 2</button>
-        <button id="player3Btn">Player 3</button> <!-- New button for Player 3 -->
-        <button id="resetBtn">Reset Status</button>
-        <div id="message"></div>
-    </div>
+   <div class="container">
+    <img src="https://www.pngall.com/wp-content/uploads/15/PS5-Controller-PNG-Clipart.png" alt="" srcset="">
 
-    <script>
-        const player1Btn = document.getElementById('player1Btn');
-        const player2Btn = document.getElementById('player2Btn');
-        const player3Btn = document.getElementById('player3Btn'); // New button reference
-        const resetBtn = document.getElementById('resetBtn');
-        const messageDisplay = document.getElementById('message');
+    <h1>Gaming Vibes</h1>
+    <button id="player1Btn"><i class="icon fas fa-gamepad"></i> Player 1</button>
+    <button id="player2Btn"><i class="icon fas fa-gamepad"></i> Player 2</button>
+    <button id="player3Btn"><i class="icon fas fa-gamepad"></i> Player 3</button>
+    <button id="resetBtn"><i class="icon fas fa-gamepad"></i> Reset Status</button>
+    <div id="message"></div>
+</div>
+<script>
+    const player1Btn = document.getElementById('player1Btn');
+    const player2Btn = document.getElementById('player2Btn');
+    const player3Btn = document.getElementById('player3Btn'); // New button reference
+    const resetBtn = document.getElementById('resetBtn');
+    const messageDisplay = document.getElementById('message');
 
-        player1Btn.addEventListener('click', () => {
-            fetch('/player1')
-                .then(response => response.text())
-                .then(message => {
-                    messageDisplay.textContent = message;
-                    messageDisplay.style.color = '#4CAF50'; // Green color for player 1
-                });
-        });
+    player1Btn.addEventListener('click', () => {
+        fetch('/player1')
+            .then(response => response.text())
+            .then(message => {
+                messageDisplay.textContent = message;
+                messageDisplay.style.color = '#000000'; // Green color for player 1
+            });
+    });
 
-        player2Btn.addEventListener('click', () => {
-            fetch('/player2')
-                .then(response => response.text())
-                .then(message => {
-                    messageDisplay.textContent = message;
-                    messageDisplay.style.color = '#2196F3'; // Blue color for player 2
-                });
-        });
+    player2Btn.addEventListener('click', () => {
+        fetch('/player2')
+            .then(response => response.text())
+            .then(message => {
+                messageDisplay.textContent = message;
+                messageDisplay.style.color = '#fff'; // Blue color for player 2
+            });
+    });
 
-        player3Btn.addEventListener('click', () => { // Event listener for Player 3 button
-            fetch('/player3')
-                .then(response => response.text())
-                .then(message => {
-                    messageDisplay.textContent = message;
-                    messageDisplay.style.color = '#FF5733'; // Another color for player 3
-                });
-        });
+    player3Btn.addEventListener('click', () => { // Event listener for Player 3 button
+        fetch('/player3')
+            .then(response => response.text())
+            .then(message => {
+                messageDisplay.textContent = message;
+                messageDisplay.style.color = '#fff'; // Another color for player 3
+            });
+    });
 
-        resetBtn.addEventListener('click', () => {
-            fetch('/reset')
-                .then(response => response.text())
-                .then(message => {
-                    messageDisplay.textContent = message;
-                    messageDisplay.style.color = '#333'; // Default color for reset
-                });
-        });
+    resetBtn.addEventListener('click', () => {
+        fetch('/reset')
+            .then(response => response.text())
+            .then(message => {
+                messageDisplay.textContent = message;
+                messageDisplay.style.color = '#fff'; // Default color for reset
+            });
+    });
 
-        function getStatus() {
-            fetch('/status')
-                .then(response => response.text())
-                .then(status => {
-                    messageDisplay.textContent = status;
-                });
-        }
+    function getStatus() {
+        fetch('/status')
+            .then(response => response.text())
+            .then(status => {
+                messageDisplay.textContent = status;
+            });
+    }
 
-        getStatus();
-        setInterval(getStatus, 2000);
-    </script>
+    getStatus();
+    setInterval(getStatus, 2000);
+</script>
 </body>
 </html>
